@@ -1,0 +1,69 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    position: relative; /* Allows absolute positioning of child elements */
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Align items in a column */
+    justify-content: center; /* Center items vertically */
+    align-items: center;    /* Center items horizontally */
+    height: 100vh;         /* Full height of the viewport */
+    background-color: #f0f0f0; /* Light gray background */
+    background-image: url('tes.jpg'); /* Optional: Add a background image */
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the background image */
+    gap: 10px;             /* Space between items */
+    position: relative; /* Needed for absolute positioning of buttons */
+}
+
+.logo {
+    width: 550px; /* Adjust size as needed */
+    height: auto;
+}
+
+.center-button {
+    padding: 15px 15px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    width: 150px; /* Set a fixed width */
+}
+
+.button1 {
+    background-image: url('tes.jpg'); /* Replace with your first image URL */
+    background-size: cover;  /* Cover the entire button */
+    background-repeat: no-repeat; /* Prevent repeating the image */
+}
+
+.center-button:hover {
+    opacity: 0.8; /* Slightly transparent on hover */
+}
+
+.header-button {
+    position: absolute; /* Position relative to the nearest positioned ancestor */
+    top: 20px; /* Distance from the top */
+    right: 20px; /* Distance from the right */
+    padding: 10px 15px;
+    font-size: 14px;
+    color: black; /* Text color */
+    background-color: transparent; /* Make the background transparent */
+    border: 2px solid white; /* Add a white border */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.header-button:hover {
+    background-color: blue; /* Light background on hover */
+    color: #fff; /* Maintain text color */
+}

@@ -1,0 +1,32 @@
+.logo {
+            width: 150px;
+            height: auto;
+            animation: logo 8s ease-in-out infinite;
+        }
+
+        @keyframes logo {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg);
+            }
+         }
+         
+         p{
+          font-family: Dancing Script ;
+          font-weight: bold;
+          font-size: 65px;
+         }
+
+         .fade-in {
+          animation: fadeIn 3s; /* Apply animation */
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+      }
+      to {
+          opacity: 1;
+      }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="gameArea">
+        <!-- AI's hand -->
+        <div class="ai">
+            <div id="aiHand" class="hand"></div>
+        </div>
+        
+        <div id="score-container">
+            <div>Player Score: <span id="playerScore">0</span></div>
+            <div>AI Score: <span id="aiScore">0</span></div>
+        </div>
+        
+        <!-- Deck in the center -->
+        <div id="deck">
+            <div id="deckPile" class="deck-card"></div>
+        </div>
+    
+        <div class="centered1">
+            <div id="deckCount"><span id="deckRemaining"></span></div>
+        </div>
+
+        <div class="centered2">
+            <div id="status">Your turn. Click on a card to ask for it.</div>
+        </div>
+
+        <!-- Player's hand -->
+        <div class="player">
+            <div id="playerHand" class="hand"></div>
+        </div>
+
+        <button id="restartBtn" style="display: none;">Restart Game</button>
+    </div> 
+    <script src="index.js"></script>
+</body>
+</html>
+

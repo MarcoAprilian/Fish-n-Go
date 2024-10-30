@@ -50,7 +50,7 @@ function updateHands() {
     aiHand.forEach(() => {
         const aiCardDiv = document.createElement('div');
         aiCardDiv.className = 'card';
-        aiCardDiv.style.backgroundColor = 'red';
+        aiCardDiv.innerHTML = `<img src="/Image/Kartu-Back.png" style="width:100%; height:100%;">`;
         
         aiHandDiv.appendChild(aiCardDiv);
     });

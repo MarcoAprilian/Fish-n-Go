@@ -7,7 +7,7 @@ const suits = ['D', 'H', 'S', 'C'];
     let aiHand = [];
     let playerScore = 0;
     let aiScore = 0;
-    let currentPlayerTurn = 'player';  // Keeps track of who is playing
+    let currentPlayerTurn = 'player'; 
     let moveHistory = [];
 
     function shuffle(array) {
@@ -26,10 +26,7 @@ const suits = ['D', 'H', 'S', 'C'];
         }
         updateDeckCount();
         updateHands();
-    }
-
-    // Function to sort hand by rank
-    
+    }    
     
     function updateHands() {
         const playerHandDiv = document.getElementById('playerHand');
@@ -53,7 +50,7 @@ const suits = ['D', 'H', 'S', 'C'];
         aiHand.forEach(() => {
             const aiCardDiv = document.createElement('div');
             aiCardDiv.className = 'card';
-            aiCardDiv.style.backgroundColor = 'red';  // AI's card backs
+            aiCardDiv.style.backgroundColor = 'red';
             
             aiHandDiv.appendChild(aiCardDiv);
         });
@@ -78,7 +75,7 @@ const suits = ['D', 'H', 'S', 'C'];
 
     function takeCards(hand, rank) {
         const cardsTaken = hand.filter(card => card.rank === rank);
-        hand = hand.filter(card => card.rank !== rank);  // Remove the taken cards
+        hand = hand.filter(card => card.rank !== rank);  // Remove card yang diambe
         if (currentPlayerTurn === 'player') {
             aiHand = hand;
         } else {
@@ -109,7 +106,7 @@ const suits = ['D', 'H', 'S', 'C'];
     }
 
     function aiTurn() {
-        if (aiHand.length === 0 || deck.length === 0) return; // AI can't play if it has no cards
+        if (aiHand.length === 0 || deck.length === 0) return;
 
         const randomCard = aiHand[Math.floor(Math.random() * aiHand.length)];
         const rank = randomCard.rank;
@@ -145,7 +142,7 @@ const suits = ['D', 'H', 'S', 'C'];
             counts[card.rank] = (counts[card.rank] || 0) + 1;
             if (counts[card.rank] === 4) {
                 updateStatus(`${owner === 'player' ? 'You' : 'AI'} completed 4 of a kind: ${card.rank}s!`);
-                newHand = newHand.filter(c => c.rank !== card.rank);  // Remove the set
+                newHand = newHand.filter(c => c.rank !== card.rank);  // Remove set 4 of a kind
                 
                 if (owner === 'player') {
                     playerScore += 1;
@@ -161,6 +158,7 @@ const suits = ['D', 'H', 'S', 'C'];
         return newHand;
     }
 
+    //update history
     function updateMoveHistory(message) {
         const historyLog = document.getElementById('historyLog');
         const historyItem = document.createElement('div');
@@ -177,9 +175,7 @@ const suits = ['D', 'H', 'S', 'C'];
     function endGame() {
     const winner = playerScore > aiScore ? 'You win!' : (aiScore > playerScore ? 'AI wins!' : 'It\'s a tie!');
     updateStatus(`Game over! ${winner}`);
-    currentPlayerTurn = null;  // Disable further turns
-
-    // Show the restart button and overlay
+    currentPlayerTurn = null;
     document.getElementById('restartBtn').style.display = 'block';
     document.getElementById('overlay').style.display = 'block';
 }
@@ -189,11 +185,11 @@ const suits = ['D', 'H', 'S', 'C'];
         document.getElementById('deckRemaining').innerText = deck.length;
     }
 
-    // Start the game by dealing cards
+    // Start game
     dealCards();
 
 function restartGame() {
-    location.reload();  // This will reload the page and reset the game
+    location.reload();
 }
 
 

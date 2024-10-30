@@ -96,38 +96,38 @@ html, body {
     font-size: 14px;
     color: black;
     background-color: transparent;
-    border: 2px solid white; /* Add a white border */
+    border: 2px solid white;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    transition: background-color 0.3s, color 0.3s; 
 }
 
 .header-button:hover {
-    background-color: blue; /* Light background on hover */
-    color: #fff; /* Maintain text color */
+    background-color: blue; 
+    color: #fff; 
 }
 
 .music-button {
-    position: absolute; /* Position relative to the nearest positioned ancestor */
-    top: 0px; /* Distance from the top */
-    left: 20px; /* Distance from the right */
+    position: absolute; 
+    top: 0px; 
+    left: 20px; 
     padding: 10px 15px;
     font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    transition: background-color 0.3s, color 0.3s; 
 }
 
 .leaderboard-button {
-    position: absolute; /* Position relative to the nearest positioned ancestor */
-    top: 5.2%; /* Distance from the top */
-    right: 3%; /* Distance from the right */
+    position: absolute;
+    top: 5.2%; 
+    right: 3%;
     padding: 10px 15px;
     font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    transition: background-color 0.3s, color 0.3s; 
     transform: translate(-50%, -50%);
     background-color: transparent;
-    border: 2px solid white; /* Add a white border */
+    border: 2px solid white;
     border-radius: 5px;
 }
 

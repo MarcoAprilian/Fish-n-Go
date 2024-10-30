@@ -15,14 +15,13 @@ body {
     height: 100vh;
 }
 
-.player, .ai {
-    display: flex;
-    justify-content: center;
-    margin: 20px;
-}
-
 .hand {
     display: flex;
+    justify-content: center;
+}
+
+.player, .ai {
+    margin: 20px;
 }
 
 .hand .card {
@@ -51,7 +50,7 @@ body {
 }
 
 #deck {
-    margin-top: 23%;
+    margin-top: 27%;
     left: 50%;
     position: absolute;
     color: black;
@@ -69,7 +68,7 @@ body {
 }
 
 #score-container {
-    margin-top: 12.5%;
+    margin-top: 15%;
     left: 46%;
     position: absolute;
     font-size: 25px;
@@ -90,15 +89,13 @@ body {
         
 .centered1 {
     position: absolute;
-    top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%);
     font-size: 75px;
 }
 
 .centered2 {
     position: absolute;
-    top: 535px;
+    top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -135,11 +132,30 @@ body {
     display: none;
 }
 
-/*BGM*/
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    font-size: 20px;
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+.back-button:hover {
+    background-color: blue; 
+    color: #fff; 
+}
+
+/* BGM */
 .music-button {
     position: absolute; 
     top: 10px;
-    left: 20px; 
+    right: 20px; 
     font-size: 14px;
     background-color: white;
     cursor: pointer;
@@ -169,6 +185,7 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     z-index: 1;
     padding: 10px;
+    right: 0; /* Aligns the dropdown to the left of the button */
 }
 
 .dropdown-content p {
@@ -180,4 +197,4 @@ body {
     padding: 5px 10px;
     margin-top: 10px;
     cursor: pointer;
-}   
+}

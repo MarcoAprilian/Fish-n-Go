@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="gameArea">
+        <!-- AI's hand -->
+        <div class="ai">
+            <div id="aiHand" class="hand"></div>
+        </div>
+        
+        <div id="score-container">
+            <div>Player Score: <span id="playerScore">0</span></div>
+            <div>AI Score: <span id="aiScore">0</span></div>
+        </div>
+        
+        <!-- Deck in the center -->
+        <div id="deck">
+            <div id="deckPile" class="deck-card"></div>
+            <div id="deckCount"  class="centered1"><span id="deckRemaining"></span></div>
+        </div>
+
+        <div class="centered2">
+            <div id="status">Your turn. Click on a card to ask for it.</div>
+        </div>
+
+        <!-- Player's hand -->
+        <div class="player">
+            <div id="playerHand" class="hand"></div>
+        </div>
+
+        <button id="restartBtn" style="display: none;">Restart Game</button>
+    </div> 
+
+    <!--BGM!-->
+    <div class="music-button">
+        <div class="dropdown">
+            <button id="menu-button">
+                <i class="fa fa-music"></i>
+            </button>
+            <div class="dropdown-content" id="dropdown-content">
+                <p>Track List</p>
+                <button id="play-1" value="/BGM/BGM1.mp3"><i class="fa fa-play"></i></button> Track 1<br>
+                <button id="play-2" value="/BGM/BGM2.mp3"><i class="fa fa-play"></i></button> Track 2<br>
+                <button id="play-3" value="/BGM/BGM3.mp3"><i class="fa fa-play"></i></button> Track 3<br>
+                <button id="play-4" value="/BGM/BGM4.mp3"><i class="fa fa-play"></i></button> Track 4<br>
+                <button id="play-5" value="/BGM/BGMMIAW.mp3"> <i class="fa fa-play"></i></button> Track 5<br>
+                <button id="mute">Mute</button>
+            </div>
+        </div>
+    </div>
+
+    <audio id="background-music" src="" hidden></audio>
+    <script src="BGM.js"></script>
+
+    <script src="index.js"></script>
+</body>
+</html>

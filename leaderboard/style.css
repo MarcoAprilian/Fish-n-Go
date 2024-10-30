@@ -1,6 +1,9 @@
 body {
     font-family: 'Comic Sans MS', cursive, sans-serif;
-    background-image: url("Background.png");
+    background-image: url('/Image/background.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;

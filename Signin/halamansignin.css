@@ -31,19 +31,19 @@
   
   form {
     transform: translate3d(0, 0, 0);
-    padding: calc(var(--spacer) / 2); /* Reduced padding */
-    width: 300px; /* Set a fixed width */
+    padding: calc(var(--spacer) / 2); 
+    width: 300px;
   }
   form > * + * {
-    margin-top: calc(var(--spacer) / 2); /* Reduced margin */
+    margin-top: calc(var(--spacer) / 2);
   }
   
   .form-item > * + * {
-    margin-top: 0.25rem; /* Reduced margin */
+    margin-top: 0.25rem; 
   }
   
   label, input, button {
-    font-size: 1rem; /* Reduced font size */
+    font-size: 1rem; 
     font-family: monospace;
     color: var(--inputColor);
   }
@@ -68,8 +68,8 @@
   
   [id=submit] {
     cursor: pointer;
-    margin: calc(var(--spacer) * 1) 0 0 2px; /* Adjusted margin */
-    padding: 0.5rem 1rem; /* Reduced padding */
+    margin: calc(var(--spacer) * 1) 0 0 2px;
+    padding: 0.5rem 1rem; 
     color: var(--bgColor);
     background-color: var(--inputColor);
     box-shadow: 4px 4px 0 rgba(30, 144, 255, 0.2);
@@ -83,7 +83,7 @@
   }
   
   input {
-    padding: 0.5rem 3rem 0.5rem 0.5rem; /* Reduced padding */
+    padding: 0.5rem 3rem 0.5rem 0.5rem; 
     width: 100%;
     border: 2px solid transparent;
     border-radius: 0;
@@ -104,7 +104,7 @@
   }
   
   [id=eyeball] {
-    --size: 1rem; /* Reduced size */
+    --size: 1rem; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -112,7 +112,7 @@
     outline: none;
     position: absolute;
     top: 50%;
-    right: 0.5rem; /* Adjusted position */
+    right: 0.5rem;
     border: none;
     background-color: transparent;
     transform: translateY(-50%);
@@ -153,7 +153,7 @@
   [id=beam] {
     position: absolute;
     top: 50%;
-    right: 1.5rem; /* Adjusted position */
+    right: 1.5rem; 
     clip-path: polygon(100% 50%, 100% 50%, 0 0, 0 100%);
     width: 100vw;
     height: 25vw;
@@ -174,6 +174,6 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 350px; /* Lebar diperbesar */
+    max-width: 350px;
     
 }

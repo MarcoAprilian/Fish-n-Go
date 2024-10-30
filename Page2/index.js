@@ -191,4 +191,3 @@ document.getElementById('restartBtn').addEventListener('click', restartGame);
 function restartGame() {
 location.reload();
 }
-

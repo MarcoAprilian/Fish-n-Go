@@ -115,7 +115,7 @@ function aiTurn() {
         aiHand.push(...cardsTaken);
         updateMoveHistory(`AI took ${cardsTaken.length} ${rank}(s) from Player.`);
         updateStatus(`AI took your ${rank}(s)! AI gets another turn.`);
-        setTimeout(aiTurn, 1000);
+        setTimeout(aiTurn, 2000);
     } else {
         goFish('ai');
         currentPlayerTurn = 'player';

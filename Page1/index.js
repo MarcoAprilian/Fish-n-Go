@@ -5,21 +5,21 @@ const play3 = document.getElementById('play-3');
 const play4 = document.getElementById('play-4');
 const play5 = document.getElementById('play-5');
 const muteBtn = document.getElementById('mute');
-let isMuted = false; // Track whether the audio is muted
-let wasPlaying = false; // Track if music was playing before mute
+let isMuted = false; 
+let wasPlaying = false;
 
-// Show or hide dropdown menu when the button is clicked
+
 document.getElementById('menu-button').addEventListener('click', function() {
     const dropdownContent = document.getElementById('dropdown-content');
     dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
 });
 
-// Actions for the buttons in the dropdown
+
 play1.addEventListener('click', function() {
     musicPlayer.src = this.value;
     musicPlayer.play();
     isMuted = false;
-    muteBtn.textContent = 'Mute'; // Reset the mute button text
+    muteBtn.textContent = 'Mute';
 });
 
 play2.addEventListener('click', function() {
@@ -50,10 +50,10 @@ play5.addEventListener('click', function() {
     muteBtn.textContent = 'Mute';
 });
 
-// Mute and unmute functionality
+// Mute and unmute
 muteBtn.addEventListener('click', function() {
     if (isMuted) {
-        if (wasPlaying) musicPlayer.play(); // Resume if it was playing before
+        if (wasPlaying) musicPlayer.play();
         muteBtn.textContent = 'Mute';
     } else {
         if (!musicPlayer.paused) {
@@ -67,10 +67,11 @@ muteBtn.addEventListener('click', function() {
     isMuted = !isMuted;
 });
 
-// Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
-    if (!event.target.matches('#menu-button')) {
-        const dropdownContent = document.getElementById('dropdown-content');
+    const dropdownContent = document.getElementById('dropdown-content');
+    const menuButton = document.getElementById('menu-button');
+
+    if (!menuButton.contains(event.target) && !dropdownContent.contains(event.target)) {
         if (dropdownContent.style.display === 'block') {
             dropdownContent.style.display = 'none';
         }

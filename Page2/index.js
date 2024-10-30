@@ -172,11 +172,11 @@ function updateStatus(message) {
 }
 
 function endGame() {
-const winner = playerScore > aiScore ? 'You win!' : (aiScore > playerScore ? 'AI wins!' : 'It\'s a tie!');
-updateStatus(`Game over! ${winner}`);
-currentPlayerTurn = null;
-document.getElementById('restartBtn').style.display = 'block';
-document.getElementById('overlay').style.display = 'block';
+    const winner = playerScore > aiScore ? 'You win!' : (aiScore > playerScore ? 'AI wins!' : 'It\'s a tie!');
+    updateStatus(`Game over! ${winner}`);
+    currentPlayerTurn = null;
+    document.getElementById('restartBtn').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
 }
 
 function updateDeckCount() {
@@ -189,5 +189,5 @@ dealCards();
 document.getElementById('restartBtn').addEventListener('click', restartGame);
 
 function restartGame() {
-location.reload();
+    location.reload();
 }

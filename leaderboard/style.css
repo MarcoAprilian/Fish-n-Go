@@ -11,12 +11,30 @@ body {
     margin: 0;
 }
 
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    font-size: 20px;
+    color: black;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+.back-button:hover {
+    background-color: blue; 
+    color: #fff; 
+}
+
 .leaderboard {
     background-color: rgb(191, 103, 44);
     border-radius: 20px;
     border: solid 0.5px;
-    width: 600px;
-    height: 90vh;
+    width: 40%;
     padding: 20px;
     top: 10px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);

@@ -1,5 +1,5 @@
 body {
-    background-image: url(/Image/Background-Fixed.png);
+    background-image: url('/Image/Background-Fixed.png');
     background-size: cover;
     font-family: Bebas Neue ;
     text-align: center;
@@ -58,7 +58,7 @@ body {
 .deck-card {
     width: 130px;
     height: 180px;
-    background-image: url(/Image/Kartu-Back.png);
+    background-image: url('/Image/Kartu-Back.png');
     background-size: cover;
     border: 2px solid black;
     transform: translate(-50%, -50%);

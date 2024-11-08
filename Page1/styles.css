@@ -223,3 +223,22 @@ html, body {
         font-size: 70px;
     }
 }
+
+.us-button {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: black;
+    background-color: transparent;
+    border: 2px solid white; /* Add a white border */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.us-button:hover {
+    background-color: blue; /* Light background on hover */
+    color: #fff; /* Maintain text color */
+}

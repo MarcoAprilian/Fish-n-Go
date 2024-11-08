@@ -91,7 +91,6 @@ input {
   border-radius: 0;
   background-color: transparent;
   box-shadow: inset 0 0 0 2px black, inset 6px 6px 0 rgba(30, 144, 255, 0.2), 3px 3px 0 rgba(30, 144, 255, 0.2);
-  -webkit-appearance: none;
 }
 input:focus {
   outline-offset: 1px;
@@ -130,6 +129,7 @@ input:focus {
   border-radius: calc(var(--size) / 1.5) 0;
   transform: rotate(45deg);
 }
+
 .eye:before, .eye:after {
   content: "";
   position: absolute;
@@ -150,6 +150,21 @@ input:focus {
   height: 65%;
   border: 2px solid var(--inputColor);
   border-radius: 100%;
+}
+
+[id=anglerfish]  {
+  position: absolute;
+  pointer-events: none;
+  margin-left:93vh;
+  margin-top: 28vh;
+  width: 300px; /* Adjust for desired size */
+  height: 300px;
+  background-repeat: no-repeat;
+}
+
+.show-password [id=anglerfish] {
+  background-image: url("Design_1_-removebg-preview.png");
+
 }
 
 [id=beam] {
@@ -177,6 +192,7 @@ input:focus {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 350px;
+  margin-bottom: 20vh;
 }
 
 .back-button {
@@ -196,4 +212,23 @@ input:focus {
 .back-button:hover {
   background-color: blue; 
   color: #fff; 
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2vh; /* Adjust as needed */
+}
+
+.signuplink {
+  font-size: 0.9rem;
+  color: var(--inputColor);
+  text-decoration: none;
+  margin-top: 3vh;
+  margin-left: 2vh; /* Optional, adjust spacing */
+}
+
+.signuplink:hover {
+  text-decoration: underline;
 }

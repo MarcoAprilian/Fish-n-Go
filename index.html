@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fish n' Go</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <img src="Image/logo.png" alt="Logo" class="logo"> 
+        <p class="fade-in title">FISH n' GO</p>
+            <a href="Signin/halamansignin.html">
+                <button class="login-button">Log In</button>
+            </a>
+            <a href="About/about.html">
+                <button class="fa fa-question-circle about-button"></button>
+            </a>
+            <a href="leaderboard/leaderboard.html">
+                <button class="leaderboard-button">Leader Board</button>
+            </a>
+            <a href="Page2/Page2.html">
+                <button class="center-button button1">PLAY</button>
+            </a>
+            <a href="Us/us.html">
+                <button class="us-button">About Us</button>
+            </a> 
+        <div class="music-button">
+            <div class="dropdown">
+                <button id="menu-button">
+                    <i class="fa fa-music"></i>
+                </button>
+                <div class="dropdown-content" id="dropdown-content">
+                    <p>Track List</p>
+                    <button id="play-1" value="/BGM/BGM1.mp3"><i class="fa fa-play"></i></button> Track 1<br>
+                    <button id="play-2" value="/BGM/BGM2.mp3"><i class="fa fa-play"></i></button> Track 2<br>
+                    <button id="play-3" value="/BGM/BGM3.mp3"><i class="fa fa-play"></i></button> Track 3<br>
+                    <button id="play-4" value="/BGM/BGM4.mp3"><i class="fa fa-play"></i></button> Track 4<br>
+                    <button id="play-5" value="/BGM/BGMMIAW.mp3"> <i class="fa fa-play"></i></button> Track 5<br>
+                    <button id="mute">Mute</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <audio id="click-sound" src="BGM/mouse.mp3" preload="auto"></audio>
+    <script src="BGM/Clicksfx.js"></script>
+    <audio id="background-music" src=""></audio>
+    <script src="BGM.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-image: url('/Image/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    font-size: 20px;
+    color: black;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+.back-button:hover {
+    background-color: blue; 
+    color: #fff; 
+}
+
+.leaderboard {
+    background-color: rgb(191, 103, 44);
+    border-radius: 20px;
+    border: solid 0.5px;
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    top: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    position: relative;
+}
+
+.inner-leaderboard {
+    border: solid 5px;
+    border-radius: 15px;
+}
+
+.Teks-leaderboard {
+    background-color: rgb(27, 39, 85);
+    color: white;
+    margin: auto;
+    padding: 10px;
+    font-size: 24px;
+    text-shadow: 2px 2px 0px rgb(34, 2, 141);
+    border-bottom: solid 5px black;
+}
+
+.top-three {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.spot {
+    background-color: #ffd700;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    position: relative;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+.spot:hover {
+    transform: scale(1.1);
+}
+
+.spot.first {
+    background-color: #2737eb;
+    font-size: 60px;
+    width: 80px;
+    height: 140px;
+    z-index: 2;
+    flex-direction: column;
+}
+
+.spot.second {
+    background-color: #1a25a0;
+    font-size: 50px;
+    width: 80px;
+    height: 120px;
+    z-index: 1;
+    flex-direction: column;
+}
+
+.spot.third {
+    background-color: #1a27b3;
+    font-size: 40px;
+    width: 80px;
+    height: 100px;
+    z-index: 0;
+    flex-direction: column;
+}
+
+.inner-spot {
+    background-color: white;
+    font-size: 10px;
+    border: solid 1px black;
+    border-radius: 10px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.remaining {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    top: 10px;
+    bottom: 0;
+}
+
+.remaining li {
+    background-color: whitesmoke;
+    border: 3px solid;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 2px 0;
+    font-size: 14px;
+    font-weight: bold;
+    width: 100%;
+    max-width: 500px;
+    color: #333;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.remaining li .skor {
+    margin-right: 60px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.remaining li:hover {
+    transform: scale(1.05) rotate(-1deg);
+    background-color: #ffb6c1;
+}
+
+.remaining li::after {
+    content: "\1F396";
+    font-size: 15px;
+    position: absolute;
+    right: 15px;
+}
+
+@media (max-width: 768px) {
+    .Teks-leaderboard {
+        font-size: 24px;
+    }
+
+    .spot.first, .spot.second, .spot.third {
+        font-size: 60px;
+        width: 60px;
+        height: 100px;
+    }
+
+    .inner-spot {
+        font-size: 8px;
+        padding: 8px;
+    }
+
+    .remaining li {
+        font-size: 12px;
+    }
+
+    .back-button {
+        font-size: 16px;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .Teks-leaderboard {
+        font-size: 20px;
+    }
+
+    .spot.first, .spot.second, .spot.third {
+        font-size: 40px;
+        width: 50px;
+        height: 80px;
+    }
+
+    .inner-spot {
+        font-size: 6px;
+        padding: 6px;
+    }
+
+    .remaining li {
+        font-size: 10px;
+        width: 90%;
+    }
+
+    .back-button {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+}

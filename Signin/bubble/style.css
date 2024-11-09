@@ -1,0 +1,18 @@
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(151, 211, 231, 0.7);
+    pointer-events: none;
+    animation: bubbleAnimation 2s ease-out forwards;
+    z-index: 10;
+}
+@keyframes bubbleAnimation {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}

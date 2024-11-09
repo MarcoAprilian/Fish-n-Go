@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <a href="/index.html">
+        <button class="back-button"><b></b></button>
+    </a>
+
+    <div class="container">
+        <h1 class="header">CARA BERMAIN</h1>
+        <hr size =3 color="black">
+        <ol>
+            <li>Player dan lawan masing-masing mendapatkan tujuh buah kartu.</li>
+            <li>Ketika giliran player, player akan mendapatkan kesempatan untuk memilih kartu yang diinginkan dari tangan lawan.</li>
+            <li>Jika kartu yang diminta terdapat di tangan lawan, maka kartu         
+                akan dipindahkan ke tangan player dan player mendapatkan giliran tambahan.</li>
+            <li>Jika kartu yang diminta tidak terdapat di tangan lawan, maka     
+                player akan mengambil kartu dari atas deck (Go Fish). Jika kartu yang diminta 
+                sama dengan kartu yang didapatkan dari deck, maka player mendapatkan giliran tambahan.</li>
+            <li>Jika terdapat empat buah kartu dengan nilai yang sama di tangan player,   
+                maka empat kartu tersebut diambil dari tangan player dan player           
+                mendapatkan poin sebanyak satu.</li>
+            <li>Setelah giliran player habis, lawan akan bermain dengan ketentuan yang      
+                sama dengan cara bermain player.</li>
+            <li>Jika kartu di deck ataupun kartu di tangan player/lawan habis, maka   
+                game berakhir dan pemain dengan poin terbanyak lah yang menang.</li>
+        </ol>
+    </div>
+
+    <audio id="click-sound" src="/BGM/mouse.mp3" preload="auto"></audio>
+    <script src="../BGM/Clicksfx.js"></script>
+</body>
+</html>

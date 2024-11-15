@@ -208,3 +208,30 @@ document.getElementById('restartBtn').addEventListener('click', restartGame);
 function restartGame() {
     location.reload();
 }
+// Existing game logic...
+
+function showEndingScreen(win) {
+    const endingScreen = document.getElementById('endingScreen');
+    const resultText = document.getElementById('resultText');
+
+    // Display "You Win" or "You Lose"
+    resultText.textContent = win ? 'You Win!' : 'You Lose!';
+    endingScreen.style.display = 'flex';
+}
+
+function playAgain() {
+    location.reload(); // Refresh the page
+}
+
+function goToMainMenu() {
+    window.location.href = '/main-menu'; // Replace with your main menu URL
+}
+
+// Add event listeners to buttons
+document.getElementById('playAgainBtn').addEventListener('click', playAgain);
+document.getElementById('mainMenuBtn').addEventListener('click', goToMainMenu);
+
+function endGame() {
+    const winner = playerScore > aiScore ? 'player' : (aiScore > playerScore ? 'ai' : 'tie');
+    showEndingScreen(winner === 'player');
+}

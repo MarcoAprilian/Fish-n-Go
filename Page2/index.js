@@ -1,3 +1,4 @@
+const cardsound = document.getElementById("card-sound");
 const suits = ['D', 'H', 'S', 'C'];
 const ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
@@ -23,7 +24,12 @@ function dealCards() {
     shuffle(deck);
     for (let i = 0; i < 7; i++) {
         playerHand.push(deck.pop());
+        cardsound.currentTime = 0; // Reset time to start the sound from the beginning
+        cardsound.play();
+        
         aiHand.push(deck.pop());
+        cardsound.currentTime = 0; // Reset time to start the sound from the beginning
+        cardsound.play();
     }
     updateDeckCount();
     updateHands();
@@ -61,6 +67,8 @@ function askForCard(rank) {
     const cardsTaken = takeCards(aiHand, rank);
     if (cardsTaken.length > 0) {
         playerHand.push(...cardsTaken);
+        cardsound.currentTime = 0; // Reset time to start the sound from the beginning
+        cardsound.play();
         updateMoveHistory(`Player took ${cardsTaken.length} ${rank}(s) from AI.`);
         updateStatus(`You got ${cardsTaken.length} ${rank}(s) from AI! You get another turn.`);
         total_player_skor += 5;
@@ -91,10 +99,14 @@ function goFish(player) {
         const newCard = deck.pop();
         if (player === 'player') {
             playerHand.push(newCard);
+            cardsound.currentTime = 0; // Reset time to start the sound from the beginning
+            cardsound.play();
             updateMoveHistory(`Player went fishing and drew a ${newCard.rank}.`);
             updateStatus(`Go Fish! You drew a ${newCard.rank}.`);
         } else {
             aiHand.push(newCard);
+            cardsound.currentTime = 0; // Reset time to start the sound from the beginning
+            cardsound.play();
             updateMoveHistory(`AI went fishing and drew a card.`);
             updateStatus(`AI says "Go Fish" and draws a card.`);
         }
@@ -115,6 +127,8 @@ function aiTurn() {
     const cardsTaken = takeCards(playerHand, rank);
     if (cardsTaken.length > 0) {
         aiHand.push(...cardsTaken);
+        cardsound.currentTime = 0; // Reset time to start the sound from the beginning
+        cardsound.play();
         updateMoveHistory(`AI took ${cardsTaken.length} ${rank}(s) from Player.`);
         updateStatus(`AI took your ${rank}(s)! AI gets another turn.`);
         setTimeout(aiTurn, 2000);

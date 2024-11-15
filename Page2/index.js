@@ -7,6 +7,7 @@ let playerHand = [];
 let aiHand = [];
 let playerScore = 0;
 let aiScore = 0;
+let total_player_skor = 0;
 let currentPlayerTurn = 'player'; 
 let moveHistory = [];
 
@@ -62,6 +63,7 @@ function askForCard(rank) {
         playerHand.push(...cardsTaken);
         updateMoveHistory(`Player took ${cardsTaken.length} ${rank}(s) from AI.`);
         updateStatus(`You got ${cardsTaken.length} ${rank}(s) from AI! You get another turn.`);
+        total_player_skor += 5;
     } else {
         goFish('player');
     }
@@ -145,6 +147,7 @@ function checkForFourOfAKind(hand, owner) {
             
             if (owner === 'player') {
                 playerScore += 1;
+                total_player_skor += 8;
                 document.getElementById('playerScore').innerText = playerScore;
                 updateMoveHistory(`Player completed a set of ${card.rank}s.`);
             } else {
@@ -172,7 +175,7 @@ function updateStatus(message) {
 }
 
 function endGame() {
-    const winner = playerScore > aiScore ? 'You win!' : (aiScore > playerScore ? 'AI wins!' : 'It\'s a tie!');
+    const winner = playerScore > aiScore ? ('You win!', total_player_skor += 20) : (aiScore > playerScore ? 'AI wins!' : 'It\'s a tie!');
     updateStatus(`Game over! ${winner}`);
     currentPlayerTurn = null;
     document.getElementById('restartBtn').style.display = 'block';

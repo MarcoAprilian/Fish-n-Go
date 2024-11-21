@@ -83,10 +83,16 @@ html, body {
     font-weight: bold;
 }
 
+.header-buttons {
+    position: absolute;
+    display: flex;
+    top: 20px;
+    gap: 10px;
+}
+
+
 .about-button {
     position: absolute;
-    top: 20px;
-    right: 225px;
     padding: 10px 15px;
     font-size: 17px;
     color: black;
@@ -104,8 +110,6 @@ html, body {
 
 .login-button {
     position: absolute;
-    top: 20px;
-    right: 20px;
     padding: 10px 15px;
     font-size: 14px;
     color: black;
@@ -123,8 +127,6 @@ html, body {
 
 .leaderboard-button {
     position: absolute;
-    top: 20px;
-    right: 100px;
     padding: 10px 15px;
     font-size: 14px;
     color: black;

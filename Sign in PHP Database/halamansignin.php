@@ -1,19 +1,20 @@
 <?php
+session_start(); 
 
-include 'db.php';
+include '../db.php';
 
 $error = "";
 
-// Handle form submission for login
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Check if user exists and password matches
     $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
     $stmt->execute(['username' => $username, 'password' => $password]);
     
     if ($stmt->rowCount() > 0) {
+        $_SESSION['username'] = $username; 
+        
         header("Location: ../Profil/profil.html");
         exit();
     } else {
@@ -33,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
 </head>
 <body>
 
-<a href="../index.html">
+<a href="../index.php">
   <button class="back-button"><b>></b></button>
 </a>
 

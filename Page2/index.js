@@ -43,7 +43,7 @@ function updateHands() {
     playerHand.forEach(card => {
         const cardDiv = document.createElement('div');
         cardDiv.className = 'card';
-        cardDiv.innerHTML = `<img src="/Image/${card.id}.png" alt="${card.id}" style="width:100%; height:100%;">`;
+        cardDiv.innerHTML = `<img src="../Image/${card.id}.png" alt="${card.id}" style="width:100%; height:100%;">`;
         cardDiv.addEventListener('click', () => {
             if (currentPlayerTurn === 'player') {
                 askForCard(card.rank);
@@ -57,7 +57,7 @@ function updateHands() {
     aiHand.forEach(() => {
         const aiCardDiv = document.createElement('div');
         aiCardDiv.className = 'card';
-        aiCardDiv.innerHTML = `<img src="/Image/Kartu-Back.png" style="width:100%; height:100%;">`;
+        aiCardDiv.innerHTML = `<img src="../Image/Kartu-Back.png" style="width:100%; height:100%;">`;
         
         aiHandDiv.appendChild(aiCardDiv);
     });
@@ -174,7 +174,6 @@ function checkForFourOfAKind(hand, owner) {
     return newHand;
 }
 
-//update history
 function updateMoveHistory(message) {
     const historyLog = document.getElementById('historyLog');
     const historyItem = document.createElement('div');
@@ -188,50 +187,54 @@ function updateStatus(message) {
     document.getElementById('status').innerText = message;
 }
 
-function endGame() {
-    const winner = playerScore > aiScore ? ('You win!', total_player_skor += 20) : (aiScore > playerScore ? 'AI wins!' : 'It\'s a tie!');
-    updateStatus(`Game over! ${winner}`);
-    currentPlayerTurn = null;
-    document.getElementById('restartBtn').style.display = 'block';
-    document.getElementById('overlay').style.display = 'block';
-}
-
 function updateDeckCount() {
     document.getElementById('deckRemaining').innerText = deck.length;
 }
 
-// Start game
-dealCards();
+document.getElementById('playAgainBtn').addEventListener('click', function() {
+    location.reload(); // Refresh the page
+});
 
-document.getElementById('restartBtn').addEventListener('click', restartGame);
+document.getElementById('mainMenuBtn').addEventListener('click', function() {
+    window.location.href = '../index.php';
+});
 
-function restartGame() {
-    location.reload();
+function saveScoreToLeaderboard() {
+   const username = '<?php echo $_SESSION["username"]; ?>';
+   const skor = total_player_skor;
+
+   fetch('save_score.php', {
+       method: 'POST',
+       headers: {
+           'Content-Type': 'application/x-www-form-urlencoded'
+       },
+       body: `username=${encodeURIComponent(username)}&skor=${skor}`
+   })
+   .then(response => response.text())
+   .then(data => {
+       alert(data); // Show response message
+   })
+   .catch(error => {
+       console.error('Error:', error);
+   });
 }
-// Existing game logic...
+
+document.getElementById('saveScore').addEventListener('click', saveScoreToLeaderboard);
+
+function endGame() {
+    const winner = playerScore > aiScore ? 'player' : (aiScore > playerScore ? 'ai' : 'tie');
+    showEndingScreen(winner === 'player');
+    updateStatus(`Game over! ${winner}`);
+    currentPlayerTurn = null;
+}
 
 function showEndingScreen(win) {
     const endingScreen = document.getElementById('endingScreen');
     const resultText = document.getElementById('resultText');
 
-    // Display "You Win" or "You Lose"
     resultText.textContent = win ? 'You Win!' : 'You Lose!';
     endingScreen.style.display = 'flex';
 }
 
-function playAgain() {
-    location.reload(); // Refresh the page
-}
-
-function goToMainMenu() {
-    window.location.href = '/main-menu'; // Replace with your main menu URL
-}
-
-// Add event listeners to buttons
-document.getElementById('playAgainBtn').addEventListener('click', playAgain);
-document.getElementById('mainMenuBtn').addEventListener('click', goToMainMenu);
-
-function endGame() {
-    const winner = playerScore > aiScore ? 'player' : (aiScore > playerScore ? 'ai' : 'tie');
-    showEndingScreen(winner === 'player');
-}
+// Start the game
+dealCards();

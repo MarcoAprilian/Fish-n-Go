@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Fish n Go</title>
 </head>
 <body>
     
@@ -19,6 +19,15 @@
         <div id="score-container">
             <div>Player Score: <span id="playerScore">0</span></div>
             <div>AI Score: <span id="aiScore">0</span></div>
+        </div>
+        
+        <div id="endingScreen">
+            <div class="ending-content">
+                <h1 id="resultText"></h1>
+                <button id="saveScore" class="btn">Save Score to Leaderboard</button>
+                <button id="playAgainBtn" class="btn">Play Again</button>
+                <button id="mainMenuBtn" class="btn">Main Menu</button>
+            </div>
         </div>
         
         <!-- Deck in the center -->
@@ -35,14 +44,6 @@
         <div class="player">
             <div id="playerHand" class="hand"></div>
         </div>
-
-    <div id="endingScreen" class="overlay">
-        <div class="ending-content">
-            <h1 id="resultText"></h1>
-            <button id="playAgainBtn" class="btn">Play Again</button>
-            <button id="mainMenuBtn" class="btn">Main Menu</button>
-        </div>
-    </div>
 
     </div> 
 
@@ -64,9 +65,10 @@
         </div>
     </div>
 
-    <a href="/index.html">
+    <a href="../index.php">
         <button class="back-button"><b>></b></button>
     </a>
+
     <audio id="click-sound" src="/BGM/mouse.mp3" preload="auto"></audio>
     <script src="../BGM/Clicksfx.js"></script>
     <audio id="background-music" src="" hidden></audio>

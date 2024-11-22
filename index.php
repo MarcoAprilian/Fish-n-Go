@@ -1,6 +1,5 @@
-<?php 
+<?php
 session_start();
-include 'db.php';
 ?>
 
 <!DOCTYPE html>
@@ -17,26 +16,24 @@ include 'db.php';
 </head>
 <body>
     <div class="container">
+        <?php if (isset($_SESSION['username'])): ?>
+        <a href="Profil/profil.html">
+            <button class="login-button"><?php echo $_SESSION['username']; ?></button>
+        </a>
+        <?php else: ?>
+        <a href="Signin/halamansignin.php">
+            <button class="login-button">Log In</button>
+        </a>
+        <?php endif; ?>
+        
+        <a href="About/about.html">
+            <button class="fa fa-question-circle about-button"></button>
+        </a>
+        <a href="leaderboard/leaderboard.php">
+            <button class="leaderboard-button">Leader Board</button>
+        </a>
         <img src="Image/logo.png" alt="Logo" class="logo"> 
         <p class="fade-in title">FISH n' GO</p>
-        
-        <div class="header-buttons">
-            <a href="About/about.html">
-                <button class="fa fa-question-circle about-button"></button>
-            </a>
-            <a href="leaderboard/leaderboard.php">
-                <button class="leaderboard-button">Leader Board</button>
-            </a>
-            <?php if (isset($_SESSION['username'])): ?>
-                <a href="Profil/profil.html">
-                    <button class="login-button"><?php echo $_SESSION['username']; ?></button>
-                </a>
-            <?php else: ?>
-                <a href="Signin/halamansignin.php">
-                    <button class="login-button">Log In</button>
-                </a>
-            <?php endif; ?>
-        </div>
 
         <a href="Page2/Page2.html">
             <button class="center-button button1">PLAY</button>

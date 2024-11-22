@@ -1,24 +1,37 @@
 <?php
-// Start the session to track the user's login status
-session_start(); 
+session_start();
+include "../db.php";
 
-// Ensure the user is logged in by checking the session
-if (!isset($_SESSION['username'])) {
-    echo 'Error: User not logged in!';
-    exit;
+// Ambil data dari request POST
+$username = $_SESSION['username'];  // Ambil username dari sesi
+$skor = $_POST['skor'];
+$jumlah_permainan = $_POST['jumlah_permainan'];
+$jumlah_menang = $_POST['jumlah_menang'];
+
+$winrate = $jumlah_permainan > 0 ? ($jumlah_menang / $jumlah_permainan) * 100 : 0;
+
+// Ambil rank berdasarkan skor tertinggi
+$query = "SELECT username, skor FROM users ORDER BY skor DESC";
+$stmt = $pdo->prepare($query);
+$stmt->execute();
+$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Tentukan rank berdasarkan posisi
+$rank = 1;
+foreach ($users as $user) {
+    if ($user['skor'] > $skor) {
+        $rank++;
+    }
 }
 
-// Include the database connection
-include '../db.php';
-
-// Retrieve username and score from POST data
-$username = $_SESSION['username'];  // This will get the logged-in user's username
-$skor = $_POST['skor'];  // Score sent from JavaScript
-
-// Update the user's score in the database
-$stmt = $pdo->prepare("UPDATE users SET skor = :skor WHERE username = :username");
-$stmt->execute(['skor' => $skor, 'username' => $username]);
-
-// Send a response back to the client (JavaScript)
-echo "Score updated successfully!";
+// Update skor, winrate, jumlah permainan, jumlah menang, dan rank
+$query = "UPDATE users SET skor = :skor, jumlah_permainan = :jumlah_permainan, jumlah_menang = :jumlah_menang, winrate = :winrate, rank = :rank WHERE username = :username";
+$stmt = $pdo->prepare($query);
+$stmt->bindParam(':username', $username);
+$stmt->bindParam(':skor', $skor);
+$stmt->bindParam(':jumlah_permainan', $jumlah_permainan);
+$stmt->bindParam(':jumlah_menang', $jumlah_menang);
+$stmt->bindParam(':winrate', $winrate);
+$stmt->bindParam(':rank', $rank);
+$stmt->execute();
 ?>

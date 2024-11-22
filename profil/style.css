@@ -15,18 +15,40 @@ body {
     margin: 0;
 }
 
-.container {
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('background.jpeg'); /* URL gambar latar belakang */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; /* Background tetap diam */
+    background-position: center;
+    height: 100vh;
+    overflow: hidden; /* Sembunyikan scroll untuk body */
+  }
+  
+  .container {
     margin-top: 8vh;
-    width: 90%;
-    max-width: 1200px;
-    background-color: #fff;
+    width: 100%;
+    max-width: 600px;
+    height: 80vh; /* Tinggi kontainer agar ada ruang untuk scroll */
+    background: rgba(255, 255, 255, 0.3); /* Transparansi */
+    backdrop-filter: blur(10px); /* Efek blur */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+    overflow-y: scroll; /* Aktifkan scroll hanya pada kontainer */
+    box-sizing: border-box;
+    scrollbar-width: none; /* Sembunyikan scrollbar di Firefox */
+  }
+  
+  .container::-webkit-scrollbar {
+    display: none; /* Sembunyikan scrollbar di Chrome/Edge */
+  }
+  
 
 .profile-header {
     margin-top: 3vh;
@@ -70,12 +92,13 @@ h2 {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .hero {
     width: 45%;
     text-align: center;
+
 }
 
 .hero h3 {

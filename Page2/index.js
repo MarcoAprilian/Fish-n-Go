@@ -37,32 +37,54 @@ function dealCards() {
     updateHands();
 }
 
+
 function updateHands() {
     const playerHandDiv = document.getElementById('playerHand');
     const aiHandDiv = document.getElementById('aiHand');
-    
+
+    // Kosongkan elemen sebelumnya
     playerHandDiv.innerHTML = '';
-    playerHand.forEach(card => {
-        const cardDiv = document.createElement('div');
-        cardDiv.className = 'card';
-        cardDiv.innerHTML = `<img src="../Image/${card.id}.png" alt="${card.id}" style="width:100%; height:100%;">`;
-        cardDiv.addEventListener('click', () => {
-            if (currentPlayerTurn === 'player') {
-                askForCard(card.rank);
-            }
-        });
-
-        playerHandDiv.appendChild(cardDiv);
-    });
-
     aiHandDiv.innerHTML = '';
-    aiHand.forEach(() => {
-        const aiCardDiv = document.createElement('div');
-        aiCardDiv.className = 'card';
-        aiCardDiv.innerHTML = `<img src="../Image/Kartu-Back.png" style="width:100%; height:100%;">`;
-        
-        aiHandDiv.appendChild(aiCardDiv);
-    });
+
+    // Perbarui tangan player
+    if (playerHand.length === 0) {
+        // Placeholder jika tangan player kosong
+        const placeholder = document.createElement('div');
+        placeholder.className = 'placeholder';
+        placeholder.innerText = 'No cards';
+        playerHandDiv.appendChild(placeholder);
+    } else {
+        playerHand.forEach(card => {
+            const cardDiv = document.createElement('div');
+            cardDiv.className = 'card';
+            cardDiv.innerHTML = `<img src="../Image/${card.id}.png" alt="${card.id}" style="width:100%; height:100%;">`;
+
+            cardDiv.addEventListener('click', () => {
+                if (currentPlayerTurn === 'player') {
+                    askForCard(card.rank);
+                }
+            });
+
+            playerHandDiv.appendChild(cardDiv);
+        });
+    }
+
+    // Perbarui tangan AI
+    if (aiHand.length === 0) {
+        // Placeholder jika tangan AI kosong
+        const placeholder = document.createElement('div');
+        placeholder.className = 'placeholder';
+        placeholder.innerText = 'No cards';
+        aiHandDiv.appendChild(placeholder);
+    } else {
+        aiHand.forEach(card => {
+            const aiCardDiv = document.createElement('div');
+            aiCardDiv.className = 'card';
+            aiCardDiv.innerHTML = `<img src="../Image/Kartu-Back.png" style="width:100%; height:100%;">`;
+
+            aiHandDiv.appendChild(aiCardDiv);
+        });
+    }
 }
 
 function askForCard(rank) {

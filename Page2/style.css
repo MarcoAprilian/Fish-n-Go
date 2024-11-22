@@ -289,3 +289,17 @@ button.btn:hover {
     }
 }
 
+.placeholder {
+    width: 150px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px dashed #fff;
+    color: #fff;
+    font-style: italic;
+    margin: 5px auto;
+    display: inline-block;
+    border-radius: 10px;
+    font-size: 18px;
+}

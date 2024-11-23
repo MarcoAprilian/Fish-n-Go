@@ -1,13 +1,18 @@
+:root {
+    --background-image: url("../Image/background.png");
+}
+
 body {
     font-family: 'Comic Sans MS', cursive, sans-serif;
-    background-image: url('/Image/background.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    overflow: hidden;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: var(--bgColor);
+    background-image: var(--background-image);
+    background-size: cover;
+    overflow: hidden;
     margin: 0;
 }
 
@@ -59,6 +64,7 @@ body {
 }
 
 .top-three {
+    top: 10px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -66,51 +72,65 @@ body {
     gap: 10px;
 }
 
+.nama {
+    font-size: 10px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #c27c53, #b98f66);
+    padding: 3px 5px;
+    border-radius: 18%;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.nama:hover {
+    background: linear-gradient(90deg, #9e7c4f, #a6795d);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    border: 2px solid #ffffff;
+}
+
 .spot {
-    background-color: #ffd700;
     border-radius: 15px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
     font-size: 18px;
     font-weight: bold;
     color: #333;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
-    position: relative;
     padding: 10px 20px;
     margin-top: 10px;
 }
 
 .spot:hover {
     transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    border: 2px solid #ffffff;
 }
 
 .spot.first {
     background-color: #2737eb;
     font-size: 60px;
-    width: 80px;
-    height: 140px;
-    z-index: 2;
-    flex-direction: column;
+    width: 100px;
+    height: 160px;
 }
 
 .spot.second {
     background-color: #1a25a0;
     font-size: 50px;
-    width: 80px;
-    height: 120px;
-    z-index: 1;
-    flex-direction: column;
+    width: 100px;
+    height: 130px;
 }
 
 .spot.third {
     background-color: #1a27b3;
     font-size: 40px;
-    width: 80px;
+    width: 100px;
     height: 100px;
-    z-index: 0;
-    flex-direction: column;
 }
 
 .inner-spot {

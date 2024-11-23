@@ -21,6 +21,32 @@ html, body {
     height: 100vh;
 }
 
+.top-right-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: row; 
+    gap: 20px;
+    align-items: center;
+}
+
+.login-button, .leaderboard-button, .about-button {
+    padding: 10px 15px;
+    font-size: 14px;
+    color: black;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login-button:hover, .about-button:hover, .leaderboard-button:hover {
+    background-color: blue;
+    color: #fff;
+}
+
 .logo {
     width: 13%;
     height: auto;
@@ -35,14 +61,16 @@ html, body {
       transform: rotate(360deg);
     }
  }
- 
- .title{
+
+.title {
     font-family: Dancing Script;
     font-weight: bold;
     font-size: 100px;
- }
+    text-align: center;
+    margin-top: 20px;
+}
 
- .fade-in {
+.fade-in {
     animation: fadeIn 3s;
 }
 
@@ -83,61 +111,23 @@ html, body {
     font-weight: bold;
 }
 
-.about-button {
+.us-button {
     position: absolute;
-    top: 20px;
-    right: 265px;
-    padding: 10px 15px;
-    font-size: 17px;
-    color: black;
-    background-color: transparent;
-    border: 2px solid white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s; 
-}
-
-.about-button:hover {
-    background-color: blue; 
-    color: #fff; 
-}
-
-.login-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    bottom: 20px;
+    left: 20px;
     padding: 10px 15px;
     font-size: 14px;
     color: black;
     background-color: transparent;
-    border: 2px solid white;
+    border: 2px solid white; 
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s; 
 }
 
-.login-button:hover {
-    background-color: blue; 
-    color: #fff; 
-}
-
-.leaderboard-button {
-    position: absolute;
-    top: 20px;
-    right: 140px;
-    padding: 10px 15px;
-    font-size: 14px;
-    color: black;
-    background-color: transparent;
-    border: 2px solid white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s; 
-}
-
-.leaderboard-button:hover {
-    background-color: blue; 
-    color: #fff; 
+.us-button:hover {
+    background-color: blue;
+    color: #fff;
 }
 
 .music-button {
@@ -222,23 +212,4 @@ html, body {
     .title {
         font-size: 70px;
     }
-}
-
-.us-button {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    padding: 10px 15px;
-    font-size: 14px;
-    color: black;
-    background-color: transparent;
-    border: 2px solid white; /* Add a white border */
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
-}
-
-.us-button:hover {
-    background-color: blue; /* Light background on hover */
-    color: #fff; /* Maintain text color */
 }

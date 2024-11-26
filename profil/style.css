@@ -18,7 +18,7 @@ body {
 body {
     margin: 0;
     padding: 0;
-    background-image: url('background.jpeg'); /* URL gambar latar belakang */
+    background-image: url('Background.png'); /* URL gambar latar belakang */
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed; /* Background tetap diam */

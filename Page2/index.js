@@ -1,18 +1,24 @@
-const cardsound = document.getElementById("card-sound");
 const suits = ['D', 'H', 'S', 'C'];
 const ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-
 const deck = suits.flatMap(suit => ranks.map(rank => ({ id: `${rank}${suit}`, rank, suit })));
+
 let playerHand = [];
 let aiHand = [];
 let playerScore = 0;
 let aiScore = 0;
+let skor_gained = 0;
+
 let total_player_skor;
 let jumlah_permainan;
 let jumlah_menang;
-let skor_gained = 0;
 
 let currentPlayerTurn = 'player';
+
+const cardsound = document.getElementById("card-sound");
+function playSound(soundElement) {
+    soundElement.currentTime = 0; 
+    soundElement.play();         
+}
 
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -26,73 +32,48 @@ function dealCards() {
     shuffle(deck);
     for (let i = 0; i < 7; i++) {
         playerHand.push(deck.pop());
-        cardsound.currentTime = 0;
-        cardsound.play();
+        playSound(cardsound); 
         
         aiHand.push(deck.pop());
-        cardsound.currentTime = 0;
-        cardsound.play();
+        playSound(cardsound); 
     }
     updateDeckCount();
     updateHands();
 }
 
-
 function updateHands() {
     const playerHandDiv = document.getElementById('playerHand');
     const aiHandDiv = document.getElementById('aiHand');
-
-    // Kosongkan elemen sebelumnya
+    
     playerHandDiv.innerHTML = '';
+    playerHand.forEach(card => {
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'card';
+        cardDiv.innerHTML = `<img src="../Image/${card.id}.png" alt="${card.id}" style="width:100%; height:100%;">`;
+        cardDiv.addEventListener('click', () => {
+            if (currentPlayerTurn === 'player') {
+                askForCard(card.rank);
+            }
+        });
+
+        playerHandDiv.appendChild(cardDiv);
+    });
+
     aiHandDiv.innerHTML = '';
-
-    // Perbarui tangan player
-    if (playerHand.length === 0) {
-        // Placeholder jika tangan player kosong
-        const placeholder = document.createElement('div');
-        placeholder.className = 'placeholder';
-        placeholder.innerText = 'No cards';
-        playerHandDiv.appendChild(placeholder);
-    } else {
-        playerHand.forEach(card => {
-            const cardDiv = document.createElement('div');
-            cardDiv.className = 'card';
-            cardDiv.innerHTML = `<img src="../Image/${card.id}.png" alt="${card.id}" style="width:100%; height:100%;">`;
-
-            cardDiv.addEventListener('click', () => {
-                if (currentPlayerTurn === 'player') {
-                    askForCard(card.rank);
-                }
-            });
-
-            playerHandDiv.appendChild(cardDiv);
-        });
-    }
-
-    // Perbarui tangan AI
-    if (aiHand.length === 0) {
-        // Placeholder jika tangan AI kosong
-        const placeholder = document.createElement('div');
-        placeholder.className = 'placeholder';
-        placeholder.innerText = 'No cards';
-        aiHandDiv.appendChild(placeholder);
-    } else {
-        aiHand.forEach(card => {
-            const aiCardDiv = document.createElement('div');
-            aiCardDiv.className = 'card';
-            aiCardDiv.innerHTML = `<img src="../Image/Kartu-Back.png" style="width:100%; height:100%;">`;
-
-            aiHandDiv.appendChild(aiCardDiv);
-        });
-    }
+    aiHand.forEach(() => {
+        const aiCardDiv = document.createElement('div');
+        aiCardDiv.className = 'card';
+        aiCardDiv.innerHTML = `<img src="../Image/Kartu-Back.png" style="width:100%; height:100%;">`;
+        
+        aiHandDiv.appendChild(aiCardDiv);
+    });
 }
 
 function askForCard(rank) {
     const cardsTaken = takeCards(aiHand, rank);
     if (cardsTaken.length > 0) {
         playerHand.push(...cardsTaken);
-        cardsound.currentTime = 0;
-        cardsound.play();
+        playSound(cardsound);
         total_player_skor += 5;
         skor_gained += 5;
         updateStatus(`You got ${cardsTaken.length} ${rank}(s) from AI! You get another turn. Skor +5`);
@@ -121,19 +102,16 @@ function takeCards(hand, rank) {
     return cardsTaken;
 }
 
-
 function goFish(player) {
     if (deck.length > 0) {
         const newCard = deck.pop();
         if (player === 'player') {
             playerHand.push(newCard);
-            cardsound.currentTime = 0;
-            cardsound.play();
+            playSound(cardsound); // Play card sound
             updateStatus(`Go Fish! You drew a ${newCard.rank}.`);
         } else {
             aiHand.push(newCard);
-            cardsound.currentTime = 0;
-            cardsound.play();
+            playSound(cardsound); // Play card sound
             updateStatus(`AI says "Go Fish" and draws a card.`);
         }
     } else {
@@ -153,24 +131,13 @@ function aiTurn() {
         return;
     }
 
-    if (deck.length === 1) {
-        const newCard = deck.pop();
-        aiHand.push(newCard);
-        cardsound.currentTime = 0;
-        cardsound.play();
-        updateStatus(`AI drew the last card: ${newCard.rank}.`);
-        checkForWin();
-        return;
-    }
-
     const randomCard = aiHand[Math.floor(Math.random() * aiHand.length)];
     const rank = randomCard.rank;
 
     const cardsTaken = takeCards(playerHand, rank);
     if (cardsTaken.length > 0) {
         aiHand.push(...cardsTaken);
-        cardsound.currentTime = 0;
-        cardsound.play();
+        playSound(cardsound); // Play card sound
         updateStatus(`AI took your ${rank}(s)! AI gets another turn.`);
         setTimeout(aiTurn, 400);
     } else {
@@ -216,7 +183,6 @@ function checkForFourOfAKind(hand, owner) {
 
     return newHand;
 }
-
 
 function updateStatus(message) {
     document.getElementById('status').innerText = message;
@@ -287,29 +253,24 @@ function showEndingScreen(winner) {
         resultText.textContent = `Tie! Skor gained = ${skor_gained}. Total skor: ${total_player_skor} (${jumlah_permainan}).`;
     }
 
-    endingScreen.style.display = 'flex';
+    endingScreen.style.display = 'block';
 }
 
 function endGame() {
-    let winner;
+    let winner = null;
+
     if (playerScore > aiScore) {
         winner = 'player';
-        total_player_skor += 20;
-        skor_gained += 20;
         jumlah_menang += 1;
-    } else if (aiScore > playerScore) {
+    } else if (playerScore < aiScore) {
         winner = 'ai';
-    } else {
-        winner = 'tie';
     }
 
     jumlah_permainan += 1;
+
     showEndingScreen(winner);
-    updateStatus(`Game over! ${winner.charAt(0).toUpperCase() + winner.slice(1)} wins!`);
-    currentPlayerTurn = null;
     autoSaveScore();
 }
 
-// Memulai permainan
 fetchScore();
 dealCards();

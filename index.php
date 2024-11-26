@@ -36,7 +36,7 @@ session_start();
             </a>
             <?php endif; ?>
         </div>
-                
+
         <img src="Image/logo.png" alt="Logo" class="logo">
         <p class="fade-in title">FISH n' GO</p>
 
@@ -55,16 +55,17 @@ session_start();
                 </button>
                 <div class="dropdown-content" id="dropdown-content">
                     <p>Track List</p>
-                    <button id="play-1" value="/BGM/BGM1.mp3"><i class="fa fa-play"></i></button> Track 1<br>
-                    <button id="play-2" value="/BGM/BGM2.mp3"><i class="fa fa-play"></i></button> Track 2<br>
-                    <button id="play-3" value="/BGM/BGM3.mp3"><i class="fa fa-play"></i></button> Track 3<br>
-                    <button id="play-4" value="/BGM/BGM4.mp3"><i class="fa fa-play"></i></button> Track 4<br>
-                    <button id="play-5" value="/BGM/BGMMIAW.mp3"> <i class="fa fa-play"></i></button> Track 5<br>
+                    <button id="play-1" value="/BGM/BGM1.mp3"><i class="fa fa-play spasi"></i>Track 1<br></button> 
+                    <button id="play-2" value="/BGM/BGM2.mp3"><i class="fa fa-play spasi"></i>Track 2<br></button> 
+                    <button id="play-3" value="/BGM/BGM3.mp3"><i class="fa fa-play spasi"></i> Track 3<br></button>
+                    <button id="play-4" value="/BGM/BGM4.mp3"><i class="fa fa-play spasi"></i> Track 4<br></button>
+                    <button id="play-5" value="/BGM/BGMMIAW.mp3"> <i class="fa fa-play spasi"></i>Track 5<br></button> 
                     <button id="mute">Mute</button>
                 </div>
             </div>
         </div>
     </div>
+
     <audio id="click-sound" src="BGM/mouse.mp3" preload="auto"></audio>
     <script src="BGM/Clicksfx.js"></script>
     <audio id="background-music" src=""></audio>

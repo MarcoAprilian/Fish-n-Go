@@ -36,13 +36,13 @@ session_start();
             </a>
             <?php endif; ?>
         </div>
-
+                
         <img src="Image/logo.png" alt="Logo" class="logo">
         <p class="fade-in title">FISH n' GO</p>
 
-        <a href="Page2/Page2.html">
-            <button class="center-button button1">PLAY</button>
-        </a>
+        <div class="play-button-container">
+            <button class="center-button button1" id="play-button">PLAY</button>
+        </div>
 
         <a href="Us/us.html">
             <button class="us-button">About Us</button>
@@ -69,5 +69,6 @@ session_start();
     <script src="BGM/Clicksfx.js"></script>
     <audio id="background-music" src=""></audio>
     <script src="BGM.js"></script>
+    <script src="difficulty.js"></script>
 </body>
 </html>

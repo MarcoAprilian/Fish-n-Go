@@ -15,6 +15,7 @@ session_start();
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <canvas id="bubblesCanvas"></canvas>
     <div class="container">
         <div class="top-right-buttons">
             
@@ -71,5 +72,6 @@ session_start();
     <audio id="background-music" src=""></audio>
     <script src="BGM.js"></script>
     <script src="difficulty.js"></script>
+    <script src="bubble.js"></script>
 </body>
 </html>

@@ -107,11 +107,11 @@ function goFish(player) {
         const newCard = deck.pop();
         if (player === 'player') {
             playerHand.push(newCard);
-            playSound(cardsound); // Play card sound
+            playSound(cardsound); 
             updateStatus(`Go Fish! You drew a ${newCard.rank}.`);
         } else {
             aiHand.push(newCard);
-            playSound(cardsound); // Play card sound
+            playSound(cardsound); 
             updateStatus(`AI says "Go Fish" and draws a card.`);
         }
     } else {
@@ -137,7 +137,7 @@ function aiTurn() {
     const cardsTaken = takeCards(playerHand, rank);
     if (cardsTaken.length > 0) {
         aiHand.push(...cardsTaken);
-        playSound(cardsound); // Play card sound
+        playSound(cardsound);
         updateStatus(`AI took your ${rank}(s)! AI gets another turn.`);
         setTimeout(aiTurn, 400);
     } else {
@@ -181,6 +181,7 @@ function checkForFourOfAKind(hand, owner) {
         }
     });
 
+    autoSaveScore();
     return newHand;
 }
 
@@ -210,10 +211,11 @@ function fetchScore() {
                 total_player_skor = parseInt(data.skor, 10) || 0;
                 jumlah_permainan = parseInt(data.jumlah_permainan, 10) || 0;
                 jumlah_menang = parseInt(data.jumlah_menang, 10) || 0;
+                highscore = parseInt(data.highscore, 10) || 0;
                 const winrate = parseFloat(data.winrate) || 0;
                 const rank = parseInt(data.rank, 10) || 0;
 
-                updateStatus(`Welcome back! Total skor: ${total_player_skor}, Permainan: ${jumlah_permainan}, Menang: ${jumlah_menang}, Winrate: ${winrate.toFixed(2)}%, Rank: ${rank}`);
+                updateStatus(`Welcome back! Total skor: ${total_player_skor}, Rank: ${rank}`);
             }
         })
         .catch(error => console.error('Error fetching score:', error));
@@ -224,13 +226,16 @@ function autoSaveScore() {
     const skor = total_player_skor;
     const menang = jumlah_menang; 
     const permainan = jumlah_permainan;
+    const skor_tertinggi = highscore;
+
+    const newHighscore = skor_gained > skor_tertinggi ? skor_gained : skor_tertinggi;
 
     fetch('save_score.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: `username=${encodeURIComponent(username)}&skor=${skor}&jumlah_permainan=${permainan}&jumlah_menang=${menang}`
+        body: `username=${encodeURIComponent(username)}&skor=${skor}&jumlah_permainan=${permainan}&jumlah_menang=${menang}&highscore=${encodeURIComponent(newHighscore)}`
     })
     .then(response => response.text())
     .then(data => {
@@ -241,16 +246,17 @@ function autoSaveScore() {
     });
 }
 
+
 function showEndingScreen(winner) {
     const endingScreen = document.getElementById('endingScreen');
     const resultText = document.getElementById('resultText');
 
     if (winner === 'player') {
-        resultText.textContent = `You Win! Skor gained = ${skor_gained}. Total skor: ${total_player_skor} (${jumlah_permainan}).`;
+        resultText.textContent = `You Win! Skor gained = ${skor_gained}. Total skor: ${total_player_skor}.`;
     } else if (winner === 'ai') {
-        resultText.textContent = `You Lose! Skor gained = ${skor_gained}. Total skor: ${total_player_skor} (${jumlah_permainan}).`;
+        resultText.textContent = `You Lose! Skor gained = ${skor_gained}. Total skor: ${total_player_skor}.`;
     } else {
-        resultText.textContent = `Tie! Skor gained = ${skor_gained}. Total skor: ${total_player_skor} (${jumlah_permainan}).`;
+        resultText.textContent = `Tie! Skor gained = ${skor_gained}. Total skor: ${total_player_skor}.`;
     }
 
     endingScreen.style.display = 'block';

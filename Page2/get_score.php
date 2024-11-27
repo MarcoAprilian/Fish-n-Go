@@ -2,19 +2,28 @@
 session_start(); 
 include "../db.php";
 
-$username = $_SESSION['username'];
+if (!isset($_SESSION['id'])) {
+    echo json_encode(['error' => 'Session expired or user not logged in']);
+    exit;
+}
 
-// Ambil data pengguna dari database
-$query = "SELECT skor, jumlah_permainan, jumlah_menang, winrate, rank FROM users WHERE username = :username";
-$stmt = $pdo->prepare($query);
-$stmt->bindParam(':username', $username);
-$stmt->execute();
+$id = $_SESSION['id'];
 
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
+try {
+    $query = "SELECT skor, jumlah_permainan, jumlah_menang, winrate, rank, highscore FROM users WHERE id = :id";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
 
-if ($user) {
-    echo json_encode($user);  // Mengirimkan data dalam format JSON
-} else {
-    echo json_encode(['error' => 'User not found']);
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($user) {
+        echo json_encode($user); 
+    } else {
+        echo json_encode(['error' => 'User not found']);
+    }
+} catch (PDOException $e) {
+    echo json_encode(['error' => 'Database error: ' . $e->getMessage()]);
 }
 ?>

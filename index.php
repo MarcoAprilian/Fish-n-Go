@@ -42,6 +42,7 @@ session_start();
         <a href="Us/us.html">
             <button class="us-button">Tentang Kami</button>
         </a>
+        
         <div class="music-button">
             <div class="dropdown">
                 <button id="menu-button">
@@ -49,11 +50,11 @@ session_start();
                 </button>
                 <div class="dropdown-content" id="dropdown-content">
                     <p>Track List</p>
-                    <button id="play-1" value="/BGM/BGM1.mp3"><i class="fa fa-play spasi"></i>Track 1<br></button>
-                    <button id="play-2" value="/BGM/BGM2.mp3"><i class="fa fa-play spasi"></i>Track 2<br></button>
-                    <button id="play-3" value="/BGM/BGM3.mp3"><i class="fa fa-play spasi"></i> Track 3<br></button>
-                    <button id="play-4" value="/BGM/BGM4.mp3"><i class="fa fa-play spasi"></i> Track 4<br></button>
-                    <button id="play-5" value="/BGM/BGMMIAW.mp3"> <i class="fa fa-play spasi"></i>Track 5<br></button>
+                    <button id="play-1" value="BGM/BGM1.mp3"><i class="fa fa-play spasi"></i>Track 1<br></button>
+                    <button id="play-2" value="BGM/BGM2.mp3"><i class="fa fa-play spasi"></i>Track 2<br></button>
+                    <button id="play-3" value="BGM/BGM3.mp3"><i class="fa fa-play spasi"></i> Track 3<br></button>
+                    <button id="play-4" value="BGM/BGM4.mp3"><i class="fa fa-play spasi"></i> Track 4<br></button>
+                    <button id="play-5" value="BGM/BGMMIAW.mp3"> <i class="fa fa-play spasi"></i>Track 5<br></button>
                     <button id="mute">Mute</button>
                 </div>
             </div>

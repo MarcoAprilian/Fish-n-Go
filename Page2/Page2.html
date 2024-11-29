@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Fish n Go</title>
 </head>
 <body>
+
+    <a href="../index.php">
+        <button class="back-button"><b>></b></button>
+    </a>
+
     <div id="gameArea">
         <div class="ai">
             <div id="aiHand" class="hand"></div>
@@ -33,11 +39,30 @@
             <div id="playerHand" class="hand"></div>
         </div>
     </div>
+
+    <div class="music-button">
+        <div class="dropdown">
+            <button id="menu-button">
+                <i class="fa fa-music"></i>
+            </button>
+            <div class="dropdown-content" id="dropdown-content">
+                <p>Track List</p>
+                <button id="play-1" value="../BGM/BGM1.mp3"><i class="fa fa-play spasi"></i>Track 1<br></button>
+                <button id="play-2" value="../BGM/BGM2.mp3"><i class="fa fa-play spasi"></i>Track 2<br></button>
+                <button id="play-3" value="../BGM/BGM3.mp3"><i class="fa fa-play spasi"></i> Track 3<br></button>
+                <button id="play-4" value="../BGM/BGM4.mp3"><i class="fa fa-play spasi"></i> Track 4<br></button>
+                <button id="play-5" value="../BGM/BGMMIAW.mp3"> <i class="fa fa-play spasi"></i>Track 5<br></button>
+                <button id="mute">Mute</button>
+            </div>
+        </div>
+    </div>
+
     <audio id="click-sound" src="../BGM/mouse.mp3" preload="auto"></audio>
     <script src="../BGM/Clicksfx.js"></script>
     <audio id="background-music" src="" hidden></audio>
     <script src="../BGM/BGM.js"></script>
     <audio id="card-sound" src="../BGM/suarakartu.mp3" preload="auto"></audio>
+
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const difficulty = urlParams.get('difficulty');

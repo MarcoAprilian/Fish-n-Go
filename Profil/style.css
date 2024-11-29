@@ -13,10 +13,6 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0;
-}
-
-body {
-    margin: 0;
     padding: 0;
     background-image: url('../Image/Background.png');
     background-repeat: no-repeat;
@@ -25,9 +21,9 @@ body {
     background-position: center;
     height: 100vh;
     overflow: hidden;
-  }
+}
   
-  .container {
+.container {
     margin-top: 8vh;
     width: 100%;
     max-width: 600px;
@@ -38,32 +34,23 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
     box-sizing: border-box;
     scrollbar-width: none; 
-  }
-  
-  .container::-webkit-scrollbar {
-    display: none; 
-  }
-  
-
-.profile-header {
-    margin-top: 3vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 3.75vh;
-    text-align: center;
 }
 
-.profile-avatar img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-right: 20px;
+.container::-webkit-scrollbar {
+    display: none; 
+}
+  
+.profile-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .profile-info h1 {
@@ -116,32 +103,6 @@ h2 {
     color: #555;
 }
 
-.achievements ul {
-    list-style-type: none;
-    padding-left: 0;
-    text-align: center;
-}
-
-.achievements li {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 8px;
-}
-
-.gallery-images {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.gallery-images img {
-    width: 150px;
-    height: 150px;
-    border-radius: 8px;
-    object-fit: cover;
-}
-
 .status p {
     font-size: 16px;
     color: #555;
@@ -174,12 +135,21 @@ h2 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 5px;
     transition: background-color 0.3s;
 }
 
 .logout-button:hover {
     background-color: #d32f2f;
+}
+
+.delete-button {
+    background-color: #e53935; 
+    margin-top: 10px; 
+}
+
+.delete-button:hover {
+    background-color: #c62828; 
 }
 
 @media (max-width: 768px) {

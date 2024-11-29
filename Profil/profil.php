@@ -45,17 +45,10 @@ try {
 </a>
 
 <div class="container">
-    <!-- Profil Header -->
-    <header class="profile-header">
-        <div class="profile-avatar">
-            <!-- Gambar acak akan diganti secara dinamis -->
-            <img id="avatar" alt="Avatar" />
-        </div>
-        <div class="profile-info">
-            <h1><?php echo htmlspecialchars($user_data['username']); ?></h1>
-            <p>ID: <?php echo htmlspecialchars($formatted_id); ?></p>
-        </div>
-    </header>
+    <div class="profile-info">
+        <h1><?php echo htmlspecialchars($user_data['username']); ?></h1>
+        <p>ID: <?php echo htmlspecialchars($formatted_id); ?></p>
+    </div>
 
     <!-- Statistik Utama -->
     <section class="stats">
@@ -65,7 +58,7 @@ try {
                 <h3>Total Pertandingan: <?php echo htmlspecialchars($user_data['jumlah_permainan']); ?></h3>
                 <p>Total menang: <?php echo htmlspecialchars($user_data['jumlah_menang']); ?></p>
                 <p>Winrate: <?php echo htmlspecialchars($user_data['winrate']); ?>%</p>
-                <p>highscore: <?php echo htmlspecialchars($user_data['highscore']); ?></p>
+                <p>Highscore: <?php echo htmlspecialchars($user_data['highscore']); ?></p>
             </div>
         </div>
     </section>
@@ -79,11 +72,19 @@ try {
     </section>
 
     <a href="logout.php">
-        <button class="logout-button">Log Out</button>
+        <button class="logout-button">Keluar dari Akun</button>
     </a>
-    
+
+    <button class="logout-button delete-button" onclick="confirmDelete()">Hapus Akun</button>
 </div>
 
-<script src="script.js"></script>
+<script>
+    function confirmDelete() {
+    const userConfirmed = confirm("Apakah Anda yakin ingin menghapus akun Anda? Tindakan ini tidak dapat dibatalkan.");
+    if (userConfirmed) {
+        window.location.href = "delete_account.php";
+    }
+}
+</script>
 </body>
 </html>

@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
         header("Location: ../Profil/profil.php");
         exit();
     } else {
-        $error = "Invalid username or password!";
+        $error = "username atau password invalid";
     }
 }
 ?>
@@ -61,9 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
             </div>
         </div>
 
-        <button type="submit" id="submit" name="login">Log in</button>
+        <button type="submit" id="submit" name="login">Masuk</button>
     </form>
-    <a href="halamansignup.php" class="signuplink">Don't have an account?</a>
+    <a href="halamansignup.php" class="signuplink">Belum punya akun?</a>
 
     <!-- Display error message -->
     <?php if ($error): ?>

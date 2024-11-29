@@ -94,38 +94,25 @@ canvas {
     }
 }
 
+.center-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 10px;
+}
+
 .center-button {
-    margin-top: 80px;
     font-size: 16px;
-    color: black;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
-    transition: opacity 0.3s, background-color 0.3s, color 0.3s;
     width: 200px;
     border: 4px solid black;
     padding: 10px 15px;
-}
-
-.button1 {
     color: white;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     background-color: transparent;
     font-weight: bold;
-}
-
-.difficulty-btn {
-    margin: 40px 0;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: 4px solid black;
-    border-radius: 5px;
-    background-color: transparent;
-    cursor: pointer;
-    color: white;
-    font-weight: bold;
-    transition: opacity 0.3s, background-color 0.3s, color 0.3s;
 }
 
 .difficulty-btn:hover {

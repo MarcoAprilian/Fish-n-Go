@@ -59,10 +59,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
             <label>Password</label>
             <div class="input-wrapper">
                 <input type="password" name="password" id="password" autocomplete="off" required />
-                <button type="button" id="eyeball">
+                <button type="button" id="eyeball1">
                     <div class="eye"></div>
                 </button>
-                <div id="beam"></div>
+                <div id="beam1"></div>
             </div>
         </div>
 

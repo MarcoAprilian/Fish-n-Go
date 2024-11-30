@@ -5,7 +5,6 @@
   --beamColor: yellow;
   --spacer: 1rem;
   --background-image: url("../Image/background.png");
-
 }
 
 * {
@@ -26,7 +25,7 @@ body {
 
 body.show-password {
   --bgColor: black;
-  --inputColor: white;
+  --inputColor: black;
   --outlineColor: var(--beamColor);
   background: none;
   background-color: rgb(0 0 0);
@@ -51,15 +50,18 @@ label, input, button {
   font-family: monospace;
   color: var(--inputColor);
 }
+
 label:focus, input:focus, button:focus {
   outline: 3px solid var(--outlineColor);
   outline-offset: 2px;
 }
+
 label::-moz-focus-inner,
 input::-moz-focus-inner,
 button::-moz-focus-inner {
   border: none;
 }
+
 label[id=password],
 input[id=password],
 button[id=password] {
@@ -78,6 +80,7 @@ button {
   background-color: var(--inputColor);
   box-shadow: 4px 4px 0 rgba(30, 144, 255, 0.2);
 }
+
 [id=submit]:active {
   transform: translateY(1px);
 }
@@ -94,19 +97,26 @@ input {
   background-color: transparent;
   box-shadow: inset 0 0 0 2px black, inset 6px 6px 0 rgba(30, 144, 255, 0.2), 3px 3px 0 rgba(30, 144, 255, 0.2);
 }
+
 input:focus {
   outline-offset: 1px;
 }
+
 .show-password input {
   box-shadow: inset 0 0 0 2px black;
   border: 2px dashed white;
 }
+
 .show-password input:focus {
   outline: none;
   border-color: var(--beamColor);
 }
 
-[id=eyeball] {
+.show-password #confirm-password {
+  color: black;
+}
+
+[id=eyeball1], [id=eyeball2] {
   --size: 1rem; 
   display: flex;
   align-items: center;
@@ -120,7 +130,8 @@ input:focus {
   background-color: transparent;
   transform: translateY(-50%);
 }
-[id=eyeball]:active {
+
+[id=eyeball1]:active, [id=eyeball2]:active {
   transform: translateY(calc(-50% + 1px));
 }
 
@@ -142,11 +153,13 @@ input:focus {
   margin: auto;
   border-radius: 100%;
 }
+
 .eye:before {
   width: 35%;
   height: 35%;
   background-color: var(--inputColor);
 }
+
 .eye:after {
   width: 65%;
   height: 65%;
@@ -154,22 +167,7 @@ input:focus {
   border-radius: 100%;
 }
 
-[id=anglerfish]  {
-  position: absolute;
-  pointer-events: none;
-  margin-left:93vh;
-  margin-top: 28vh;
-  width: 300px; /* Adjust for desired size */
-  height: 300px;
-  background-repeat: no-repeat;
-}
-
-.show-password [id=anglerfish] {
-  background-image: url("Design_1_-removebg-preview.png");
-
-}
-
-[id=beam] {
+[id=beam1], [id=beam2] {
   position: absolute;
   top: 50%;
   right: 1.5rem; 
@@ -183,7 +181,8 @@ input:focus {
   transform: translateY(-50%) rotate(var(--beamDegrees, 0));
   pointer-events: none;
 }
-.show-password [id=beam] {
+
+.show-password [id=beam1], .show-password [id=beam2] {
   background: var(--beamColor);
 }
 
@@ -220,7 +219,7 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 2vh; /* Adjust as needed */
+  margin-top: 2vh;
 }
 
 .signuplink {
@@ -228,7 +227,7 @@ input:focus {
   color: var(--inputColor);
   text-decoration: none;
   margin-top: 3vh;
-  margin-left: 2vh; /* Optional, adjust spacing */
+  margin-left: 2vh; 
 }
 
 .signuplink:hover {

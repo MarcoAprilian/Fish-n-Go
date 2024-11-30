@@ -13,14 +13,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
     $stmt->execute(['username' => $username]);
 
     if ($stmt->rowCount() > 0) {
-        $error = "Username already exists!";
+        $error = "Username sudah diambil!";
     } else {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
         $stmt = $pdo->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
-        $stmt->execute(['username' => $username, 'password' => $password]);
+        $stmt->execute(['username' => $username, 'password' => $hashed_password]);
+
         $success = "Pendaftaran berhasil! Anda sekarang dapat masuk ke akun Anda.";
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

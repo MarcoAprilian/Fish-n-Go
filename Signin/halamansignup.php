@@ -8,23 +8,33 @@ $success = "";
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
 
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
-    $stmt->execute(['username' => $username]);
-
-    if ($stmt->rowCount() > 0) {
-        $error = "Username sudah diambil!";
+    // Cek password cocok ga
+    if ($password !== $confirm_password) {
+        $error = "Password dan konfirmasi password tidak cocok!";
     } else {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        // Cek apakah usernama sudah diambil
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
+        $stmt->execute(['username' => $username]);
 
-        $stmt = $pdo->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
-        $stmt->execute(['username' => $username, 'password' => $hashed_password]);
+        if ($stmt->rowCount() > 0) {
+            $error = "Username sudah diambil!";
+        } else {
+            // Hash
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        $success = "Pendaftaran berhasil! Anda sekarang dapat masuk ke akun Anda.";
+            // Insert data user ke database
+            $stmt = $pdo->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
+            if ($stmt->execute(['username' => $username, 'password' => $hashed_password])) {
+                $success = "Pendaftaran berhasil! Anda sekarang dapat masuk ke akun Anda.";
+            } else {
+                $error = "Terjadi kesalahan saat mendaftar, coba lagi.";
+            }
+        }
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,10 +64,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
             <label>Password</label>
             <div class="input-wrapper">
                 <input type="password" name="password" id="password" autocomplete="off" required />
-                <button type="button" id="eyeball">
+                <button type="button" id="eyeball1">
                     <div class="eye"></div>
                 </button>
-                <div id="beam"></div>
+                <div id="beam1"></div>
             </div>
         </div>
 
@@ -65,10 +75,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
             <label>Konfirmasi Password</label>
             <div class="input-wrapper">
                 <input type="password" name="confirm_password" id="confirm_password" autocomplete="off" required />
-                <button type="button" id="eyeball">
+                <button type="button" id="eyeball2">
                     <div class="eye"></div>
                 </button>
-                <div id="beam"></div>
+                <div id="beam2"></div>
             </div>
         </div>
         
@@ -87,17 +97,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
 
 <audio id="click-sound" src="/BGM/mouse.mp3" preload="auto"></audio>
 
-<script>
-    document.getElementById("signup-form").addEventListener("submit", function (event) {
-        const password = document.getElementById("password").value;
-        const confirmPassword = document.getElementById("confirm_password").value;
-
-        if (password !== confirmPassword) {
-            event.preventDefault();
-            alert("Password tidak cocok");
-        }
-    });
-</script>
 <script src="../BGM/Clicksfx.js"></script>
 <script src="halamansignin.js"></script>
 <script src="bubble/script.js"></script>

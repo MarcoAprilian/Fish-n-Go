@@ -8,18 +8,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
-    $stmt->execute(['username' => $username, 'password' => $password]);
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
+    $stmt->execute(['username' => $username]);
     
     if ($stmt->rowCount() > 0) {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        $_SESSION['username'] = $username; 
-        $_SESSION['id'] = $user['id']; 
         
-        header("Location: ../Profil/profil.php");
-        exit();
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['username'] = $username; 
+            $_SESSION['id'] = $user['id']; 
+            
+            header("Location: ../Profil/profil.php");
+            exit();
+        } else {
+            $error = "Password salah.";
+        }
     } else {
-        $error = "username atau password invalid";
+        $error = "Username tidak ditemukan.";
     }
 }
 ?>

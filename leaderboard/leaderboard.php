@@ -34,6 +34,7 @@ $sql_remaining = "
     ) AS ranked
     WHERE rank > 3
     ORDER BY rank
+    LIMIT 7
 ";
 $result_remaining = $pdo->query($sql_remaining);
 

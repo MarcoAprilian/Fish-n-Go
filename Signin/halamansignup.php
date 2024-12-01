@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+session_start();
 include '../db.php';
 
 $error = "";
@@ -10,21 +10,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
 
-    // Cek password cocok ga
+    // Validate password match
     if ($password !== $confirm_password) {
         $error = "Password dan konfirmasi password tidak cocok!";
     } else {
-        // Cek apakah usernama sudah diambil
+        // Check if username is taken
         $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
         $stmt->execute(['username' => $username]);
 
         if ($stmt->rowCount() > 0) {
             $error = "Username sudah diambil!";
         } else {
-            // Hash
+            // Hash the password
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-            // Insert data user ke database
+            // Insert new user into database
             $stmt = $pdo->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
             if ($stmt->execute(['username' => $username, 'password' => $hashed_password])) {
                 $success = "Pendaftaran berhasil! Anda sekarang dapat masuk ke akun Anda.";
@@ -44,6 +44,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
     <link rel="stylesheet" href="halamansignin.css">
     <link rel="stylesheet" href="bubble/style.css">
     <title>Sign Up</title>
+    <style>
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+        .success {
+            color: green;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 <body>
 
@@ -52,11 +62,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
 </a>
 
 <div class="login-container">
-    <form action="halamansignup.php" method="POST" id="signup-form">
+    <form action="halamansignup.php" method="POST" id="signupForm">
         <div class="form-item">
             <label>Username</label>
             <div class="input-wrapper">
-                <input type="text" name="username" id="username" autocomplete="off" required />
+                <input type="text" name="username" id="username" maxlength="16" autocomplete="off" required />
             </div>
         </div>
         
@@ -64,10 +74,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
             <label>Password</label>
             <div class="input-wrapper">
                 <input type="password" name="password" id="password" autocomplete="off" required />
-                <button type="button" id="eyeball1">
-                    <div class="eye"></div>
-                </button>
-                <div id="beam1"></div>
             </div>
         </div>
 
@@ -75,10 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
             <label>Konfirmasi Password</label>
             <div class="input-wrapper">
                 <input type="password" name="confirm_password" id="confirm_password" autocomplete="off" required />
-                <button type="button" id="eyeball2">
-                    <div class="eye"></div>
-                </button>
-                <div id="beam2"></div>
             </div>
         </div>
         
@@ -97,8 +99,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
 
 <audio id="click-sound" src="/BGM/mouse.mp3" preload="auto"></audio>
 
+<script>
+    const form = document.getElementById("signupForm");
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+    const confirmPasswordInput = document.getElementById("confirm_password");
+
+    form.addEventListener("submit", function(event) {
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+
+        // Clear previous errors
+        const errorElement = document.querySelector('.error');
+        if (errorElement) errorElement.textContent = "";
+
+        // Validate username length
+        if (username.length === 0) {
+            event.preventDefault();
+            alert("Username tidak boleh kosong!");
+            return;
+        }
+
+        if (username.length > 16) {
+            event.preventDefault();
+            alert("Username tidak boleh lebih dari 16 karakter!");
+            return;
+        }
+
+        // Validate password length
+        if (password.length < 8) {
+            event.preventDefault();
+            alert("Password harus minimal 8 karakter!");
+            return;
+        }
+
+        // Validate password match
+        if (password !== confirmPassword) {
+            event.preventDefault();
+            alert("Password dan Konfirmasi Password harus sama!");
+        }
+    });
+</script>
+
 <script src="../BGM/Clicksfx.js"></script>
-<script src="halamansignin.js"></script>
 <script src="bubble/script.js"></script>
 
 </body>
